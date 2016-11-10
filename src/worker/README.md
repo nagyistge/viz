@@ -1,3 +1,11 @@
+Links to Trello cards from first (unfinished, unreleased) stab at this work, for future reference:
+
+- https://trello.com/c/6f092gE8 (completed: branch save/web-worker-1-basic-data-processing)
+- https://trello.com/c/vLquI2n4 (partially completed: branch save/web-worker-2-schemed-based-filtering)
+- https://trello.com/c/ECCzBiNv (not started)
+- https://trello.com/c/JxbubtsT (not started)
+- https://trello.com/c/MoqejWIq (not started, but likely to be handled by @jebeck as a personal project)
+
 ## Web Worker data preprocessing
 
 The input data to the visualizations produced by code in this repository is raw data adhering to the [Tidepool data model](http://developer.tidepool.io/data-model/ 'Tidepool Developer Microsite: Data Model Documentation')(s) for diabetes data. For some visualization tasks, we need to do a little additional processing on the front end in order to work with this data. For example, UTC `time`s need to be localized according to the user's display timezone for some visualization tasks. In many cases it makes the most sense (in terms of visualization performance) to ensure that we are only doing these tasks *once* as the data is provided to the application from the back end. In order to preserve all UI interactions while this preprocessing is happening, we do the preprocessing in a [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API 'MDN: Web Worker APIs').
