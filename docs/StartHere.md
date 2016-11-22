@@ -4,10 +4,11 @@ This repository, which is published to [npm](https://www.npmjs.com/ 'node packag
 
 As you're getting ready to develop code in this repository, we recommend starting with the following documents:
 
-- [project background]('./Background.md')
-- [overview of features]('./FeatureOverview.md')
-- [planned architecture]('./Architecture.md')
-- [directory structure]('./DirectoryStructure.md')
+- [project background](./Background.md)
+- [overview of features](./FeatureOverview.md)
+- [planned architecture](./Architecture.md)
+- [directory structure](./DirectoryStructure.md)
+- [code style](./CodeStyle.md)
 
 The root-level [README]('../README.md') contains the nuts & bolts of installing, configuring, and commands to accomplish various tasks.
 
@@ -17,8 +18,8 @@ We use [webpack](https://webpack.github.io/ 'webpack module bundler') to bundle 
 
 Some of the other dependencies we leverage in this repository are, like webpack, commonly used by many others building apps today with React, and some are a bit more unusual:
 
-- [D3](https://d3js.org/ 'D3: Data-Driven Documents') ([read more]('./D3.md'))
+- [D3](https://d3js.org/ 'D3: Data-Driven Documents') ([read more](./D3.md))
 - [react-motion](https://github.com/chenglou/react-motion 'GitHub: react-motion') (see [D3 usage](./D3.md))
-- [webpack](https://webpack.github.io/ 'webpack module bundler') ([read more]('./Webpack.md'))
+- [webpack](https://webpack.github.io/ 'webpack module bundler') ([read more](./Webpack.md))
 
 Follow the "read more" link where available in this list of tools to learn more about the specifics of our usage of the tool at Tidepool.
