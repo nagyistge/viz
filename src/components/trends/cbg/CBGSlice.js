@@ -27,15 +27,12 @@ const CBGSlice = (props) => {
   if (!datum) {
     return null;
   }
-  const { aSliceIsFocused, bgBounds, isFocused } = props;
+  const { bgBounds, isFocused } = props;
   const { medianRadius, sliceCapRadius, xScale, yPositions } = props;
   const { focusSlice, unfocusSlice: unfocus } = props;
 
   function getClass(category) {
-    if (aSliceIsFocused) {
-      return isFocused ? styles.focused : styles[category];
-    }
-    return styles[category];
+    return isFocused ? styles.focused : styles[category];
   }
 
   const focusMedian = () => {
@@ -99,7 +96,7 @@ const CBGSlice = (props) => {
         renderRoundedRect('outerSlice', 'tenthQuantile', 'ninetiethQuantile'),
         renderRoundedRect('quartileSlice', 'firstQuartile', 'thirdQuartile'),
         <ellipse
-          className={aSliceIsFocused ?
+          className={isFocused ?
             styles.focused : styles[classifyBgValue(bgBounds, datum.median)]}
           key={`individualMedian-${datum.id}`}
           id={`individualMedian-${datum.id}`}
@@ -121,7 +118,6 @@ CBGSlice.defaultProps = {
 };
 
 CBGSlice.propTypes = {
-  aSliceIsFocused: PropTypes.bool.isRequired,
   bgBounds: PropTypes.shape({
     veryHighThreshold: PropTypes.number.isRequired,
     targetUpperBound: PropTypes.number.isRequired,
