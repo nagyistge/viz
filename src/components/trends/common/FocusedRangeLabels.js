@@ -21,7 +21,6 @@ import Tooltip from '../../common/tooltips/Tooltip';
 
 import { MGDL_UNITS, MMOLL_UNITS } from '../../../utils/constants';
 import { displayBgValue } from '../../../utils/format';
-import { millisecondsAsTimeOfDay } from '../../../utils/datetime';
 
 import styles from './FocusedRangeLabels.css';
 
@@ -39,8 +38,6 @@ const FocusedRangeLabels = (props) => {
   const isCbg = dataType === 'cbg';
   const dataBucket = isCbg ? 'focusedSlice' : 'focusedRange';
   const { [dataBucket]: { data, position } } = props;
-  const timeFrom = millisecondsAsTimeOfDay(data.msFrom);
-  const timeTo = millisecondsAsTimeOfDay(data.msTo);
   const top = isCbg ? focusedKeys[1] : 'max';
   const center = isCbg ? 'median' : 'mean';
   const bottom = isCbg ? focusedKeys[0] : 'min';
@@ -61,28 +58,32 @@ const FocusedRangeLabels = (props) => {
     <div className={styles.container}>
       <Tooltip
         content={<span className={styles.number}>{displayBgValue(data[top], bgUnits)}</span>}
+        backgroundColor={'transparent'}
+        borderColor={'transparent'}
         position={topPosition}
         side={'top'}
         tail={false}
-        offset={{ top: -5, left: 0 }}
       />
       <Tooltip
-        title={<span className={styles.explainerText}>{timeFrom} - {timeTo}</span>}
         content={
           <span className={styles.number}>
-            {isCbg ? 'Middle' : 'Average'} {displayBgValue(data[center], bgUnits)}
+            {isCbg ? 'middle' : 'average'} {displayBgValue(data[center], bgUnits)}
           </span>
         }
-        side={centerSide}
-        position={centerPosition}
+        backgroundColor={'transparent'}
+        borderColor={'transparent'}
         offset={{ top: 0, left: position.tooltipLeft ? -10 : 10 }}
+        position={centerPosition}
+        side={centerSide}
+        tail={false}
       />
       <Tooltip
         content={<span className={styles.number}>{displayBgValue(data[bottom], bgUnits)}</span>}
+        backgroundColor={'transparent'}
+        borderColor={'transparent'}
         position={bottomPosition}
         side={'bottom'}
         tail={false}
-        offset={{ top: 5, left: 0 }}
       />
     </div>
   );

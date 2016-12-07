@@ -41,21 +41,14 @@ const CBGDayTraceLabels = (props) => {
   return (
     <div>
       <Tooltip
-        content={<span className={styles.number}>{displayBgValue(dayMean, bgUnits)}</span>}
-        offset={{ top: 0, left: LEFT_OFFSET }}
-        position={tooltipPosition}
-        side={'right'}
-        tail={false}
-      />
-      <Tooltip
         title={
           <span className={styles.date}>
-            {moment(date, 'YYYY-MM-DD').format('dddd MMM D')}
+            {moment(date, 'YYYY-MM-DD').format('dddd MMM Do')}
           </span>
         }
-        offset={{ top: TOP_OFFSET, left: -LEFT_OFFSET }}
+        content={<span className={styles.number}>{displayBgValue(dayMean, bgUnits)}</span>}
         position={tooltipPosition}
-        side={'left'}
+        side={position.tooltipLeft ? 'left' : 'right'}
       />
     </div>
   );
