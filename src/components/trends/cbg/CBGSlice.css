@@ -17,7 +17,7 @@
 
 .focused {
   fill: var(--bkgrnd-darkest);
-  stroke: var(--cbg-slice--hover);
+  stroke: var(--data-purple--medium);
   stroke-opacity: 0.75;
   stroke-width: 1px;
 }
@@ -41,12 +41,16 @@
   composes: bgHigh from '../../../styles/diabetes.css';
 }
 
+.median {
+  fill: var(--data-purple--dark);
+}
+
 .rangeSlice {
   // the stroke on this outermost slice is to blend in w/bkgrnd
   // and thus prevent flashing when mousing from slice to slice
   stroke: var(--bkgrnd-darkest);
   stroke-width: 1px;
-  fill: var(--cbg-slice--100);
+  fill: var(--data-purple--lightest);
 }
 
 .rangeSliceHovered {
@@ -54,7 +58,7 @@
 }
 
 .outerSlice {
-  fill: var(--cbg-slice--80);
+  fill: var(--data-purple--light);
 }
 
 .outerSliceHovered {
@@ -62,7 +66,7 @@
 }
 
 .quartileSlice {
-  fill: var(--cbg-slice--50);
+  fill: var(--data-purple--medium);
 }
 
 .quartileSliceHovered {

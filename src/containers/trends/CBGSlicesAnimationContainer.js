@@ -26,12 +26,6 @@ import CBGSlice from '../../components/trends/cbg/CBGSlice';
 
 export default class CBGSlicesAnimationContainer extends React.Component {
   static propTypes = {
-    bgBounds: PropTypes.shape({
-      veryHighThreshold: PropTypes.number.isRequired,
-      targetUpperBound: PropTypes.number.isRequired,
-      targetLowerBound: PropTypes.number.isRequired,
-      veryLowThreshold: PropTypes.number.isRequired,
-    }).isRequired,
     binSize: PropTypes.number.isRequired,
     data: PropTypes.arrayOf(PropTypes.shape({
       // here only documenting the properties we actually use rather than the *whole* data model!
@@ -168,7 +162,7 @@ export default class CBGSlicesAnimationContainer extends React.Component {
           <g id="cbgAnimationContainer">
             {_.map(interpolated, (config) => (
               <CBGSlice
-                bgBounds={this.props.bgBounds}
+                aSliceIsFocused={focusedSlice !== null}
                 datum={dataById[config.key]}
                 focusedSliceKeys={this.props.focusedSliceKeys}
                 focusSlice={this.props.focusSlice}
