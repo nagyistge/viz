@@ -75,7 +75,7 @@ class Tooltip extends React.Component {
   }
 
   renderTail(color = 'white') {
-    const { tailWidth, tailHeight, borderWidth, borderColor, side } = this.props;
+    const { tailWidth, tailHeight, backgroundColor, borderWidth, borderColor, side } = this.props;
     const tailSide = (side === 'left') ? 'right' : 'left';
     const padding = 10;
     let marginOuterValue;
@@ -98,6 +98,7 @@ class Tooltip extends React.Component {
           style={{
             marginTop: `-${tailHeight}px`,
             marginLeft: marginOuterValue,
+            backgroundColor,
             borderWidth: `${tailHeight}px ${2 * tailWidth}px`,
             [`border${_.capitalize(borderSide)}Color`]: borderColor,
           }}
@@ -107,6 +108,7 @@ class Tooltip extends React.Component {
           style={{
             marginTop: `-${tailHeight}px`,
             marginLeft: marginInnerValue,
+            backgroundColor,
             borderWidth: `${tailHeight}px ${2 * tailWidth}px`,
             [`border${_.capitalize(borderSide)}Color`]: color,
           }}
@@ -144,7 +146,7 @@ class Tooltip extends React.Component {
   }
 
   render() {
-    const { title, content, position, borderColor, borderWidth } = this.props;
+    const { title, content, position, backgroundColor, borderColor, borderWidth } = this.props;
     const { offset } = this.state;
     const top = position.top + offset.top;
     const left = position.left + offset.left;
@@ -152,7 +154,7 @@ class Tooltip extends React.Component {
     return (
       <div
         className={styles.tooltip}
-        style={{ top, left, borderColor, borderWidth: `${borderWidth}px` }}
+        style={{ top, left, backgroundColor, borderColor, borderWidth: `${borderWidth}px` }}
         ref={(ref) => { this.element = ref; }}
       >
         {title && this.renderTitle(title)}
@@ -177,6 +179,7 @@ Tooltip.propTypes = {
   side: PropTypes.oneOf(['top', 'right', 'bottom', 'left']).isRequired,
   tailWidth: PropTypes.number.isRequired,
   tailHeight: PropTypes.number.isRequired,
+  backgroundColor: PropTypes.string.isRequired,
   borderColor: PropTypes.string.isRequired,
   borderWidth: PropTypes.number.isRequired,
 };
@@ -186,6 +189,7 @@ Tooltip.defaultProps = {
   side: 'left',
   tailWidth: 7,
   tailHeight: 8,
+  backgroundColor: 'white',
   borderColor: 'black',
   borderWidth: 2,
   offset: { top: 0, left: 0 },
