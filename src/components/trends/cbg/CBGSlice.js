@@ -19,8 +19,6 @@ import _ from 'lodash';
 import { select } from 'd3-selection';
 import React, { PropTypes } from 'react';
 
-import { classifyBgValue } from '../../../utils/bloodglucose';
-
 import styles from './CBGSlice.css';
 
 const CBGSlice = (props) => {
@@ -28,7 +26,7 @@ const CBGSlice = (props) => {
   if (!datum) {
     return null;
   }
-  const { bgBounds, categoryToSliceKeysMap, focusedSliceKeys, isFocused } = props;
+  const { categoryToSliceKeysMap, focusedSliceKeys, isFocused } = props;
   const { medianRadius, sliceCapRadius, xScale, yPositions } = props;
   const { focusSlice, unfocusSlice: unfocus } = props;
 
@@ -100,8 +98,7 @@ const CBGSlice = (props) => {
         renderRoundedRect('outerSlice', 'tenthQuantile', 'ninetiethQuantile'),
         renderRoundedRect('quartileSlice', 'firstQuartile', 'thirdQuartile'),
         <ellipse
-          className={isFocused ?
-            styles.focused : styles[classifyBgValue(bgBounds, datum.median)]}
+          className={getClass('median')}
           key={`individualMedian-${datum.id}`}
           id={`individualMedian-${datum.id}`}
           onMouseOver={focusMedian}
