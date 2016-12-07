@@ -74,7 +74,7 @@ class Tooltip extends React.Component {
     this.setState({ offset });
   }
 
-  renderTail(color = 'white') {
+  renderTail() {
     const { tailWidth, tailHeight, backgroundColor, borderWidth, borderColor, side } = this.props;
     const tailSide = (side === 'left') ? 'right' : 'left';
     const padding = 10;
@@ -98,7 +98,6 @@ class Tooltip extends React.Component {
           style={{
             marginTop: `-${tailHeight}px`,
             marginLeft: marginOuterValue,
-            backgroundColor,
             borderWidth: `${tailHeight}px ${2 * tailWidth}px`,
             [`border${_.capitalize(borderSide)}Color`]: borderColor,
           }}
@@ -108,9 +107,8 @@ class Tooltip extends React.Component {
           style={{
             marginTop: `-${tailHeight}px`,
             marginLeft: marginInnerValue,
-            backgroundColor,
             borderWidth: `${tailHeight}px ${2 * tailWidth}px`,
-            [`border${_.capitalize(borderSide)}Color`]: color,
+            [`border${_.capitalize(borderSide)}Color`]: backgroundColor,
           }}
         ></div>
       </div>
