@@ -70,8 +70,6 @@ const FocusedRangeLabels = (props) => {
             {isCbg ? 'middle' : 'average'} {displayBgValue(data[center], bgUnits)}
           </span>
         }
-        backgroundColor={'transparent'}
-        borderColor={'transparent'}
         offset={{ top: 0, left: position.tooltipLeft ? -10 : 10 }}
         position={centerPosition}
         side={centerSide}
