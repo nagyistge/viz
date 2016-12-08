@@ -21,6 +21,7 @@ import Tooltip from '../../common/tooltips/Tooltip';
 
 import { MGDL_UNITS, MMOLL_UNITS } from '../../../utils/constants';
 import { displayBgValue } from '../../../utils/format';
+import { millisecondsAsTimeOfDay } from '../../../utils/datetime';
 
 import styles from './FocusedRangeLabels.css';
 
@@ -38,6 +39,8 @@ const FocusedRangeLabels = (props) => {
   const isCbg = dataType === 'cbg';
   const dataBucket = isCbg ? 'focusedSlice' : 'focusedRange';
   const { [dataBucket]: { data, position } } = props;
+  const timeFrom = millisecondsAsTimeOfDay(data.msFrom);
+  const timeTo = millisecondsAsTimeOfDay(data.msTo);
   const top = isCbg ? focusedKeys[1] : 'max';
   const center = isCbg ? 'median' : 'mean';
   const bottom = isCbg ? focusedKeys[0] : 'min';
@@ -65,6 +68,7 @@ const FocusedRangeLabels = (props) => {
         tail={false}
       />
       <Tooltip
+        title={isCbg ? null : <span className={styles.explainerText}>{timeFrom} - {timeTo}</span>}
         content={
           <span className={styles.number}>
             {isCbg ? 'middle' : 'average'} {displayBgValue(data[center], bgUnits)}
