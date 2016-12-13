@@ -20,9 +20,9 @@ import React, { PropTypes } from 'react';
 
 import { classifyBgValue } from '../../../utils/bloodglucose';
 
-import styles from './CBGDayTrace.css';
+import styles from './CBGDateTrace.css';
 
-const CBGDayTrace = (props) => {
+const CBGDateTrace = (props) => {
   const { bgBounds, data, date, xScale, yScale } = props;
   return (
     <g id={`individualCbgs-${date}`}>
@@ -39,7 +39,7 @@ const CBGDayTrace = (props) => {
   );
 };
 
-CBGDayTrace.propTypes = {
+CBGDateTrace.propTypes = {
   bgBounds: PropTypes.shape({
     veryHighThreshold: PropTypes.number.isRequired,
     targetUpperBound: PropTypes.number.isRequired,
@@ -57,4 +57,4 @@ CBGDayTrace.propTypes = {
   yScale: PropTypes.func.isRequired,
 };
 
-export default CBGDayTrace;
+export default CBGDateTrace;

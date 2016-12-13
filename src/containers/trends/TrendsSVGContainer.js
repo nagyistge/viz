@@ -39,6 +39,8 @@ const SMBG_OPTS = {
   r: 6,
 };
 
+const CBG_SLICE_RADIUS = 9;
+
 import React, { PropTypes } from 'react';
 import dimensions from 'react-dimensions';
 import _ from 'lodash';
@@ -46,8 +48,8 @@ import _ from 'lodash';
 import { MGDL_UNITS, MMOLL_UNITS } from '../../utils/constants';
 import { THREE_HRS } from '../../utils/datetime';
 import BackgroundWithTargetRange from '../../components/trends/common/BackgroundWithTargetRange';
-import CBGDayTrace from '../../components/trends/cbg/CBGDayTrace';
-import CBGsByDate from '../../components/trends/cbg/CBGsByDate';
+import CBGDateTrace from '../../components/trends/cbg/CBGDateTrace';
+import CBGDateAggRect from '../../components/trends/cbg/CBGDateAggRect';
 import CBGSlicesAnimationContainer from './CBGSlicesAnimationContainer';
 import SMBGsByDateContainer from './SMBGsByDateContainer';
 import SMBGRangeAvgAnimationContainer from './SMBGRangeAvgAnimationContainer';
@@ -145,13 +147,14 @@ export class TrendsSVGContainer extends React.Component {
 
       if (this.props.focusedSlice) {
         focusedSlice = (
-          <CBGsByDate
+          <CBGDateAggRect
             bgBounds={this.props.bgBounds}
             dataGroupedByDate={this.state.focusedSliceDataGroupedByDate}
             focusDate={this.props.focusDate}
-            focusedDate={focusedDate}
+            focusedMeanDate={focusedDate}
             focusedSlice={this.props.focusedSlice}
             onSelectDate={this.props.onSelectDate}
+            sliceRadius={CBG_SLICE_RADIUS}
             tooltipLeftThreshold={this.props.tooltipLeftThreshold}
             unfocusDate={this.props.unfocusDate}
             unfocusSlice={this.props.unfocusSlice}
@@ -163,7 +166,7 @@ export class TrendsSVGContainer extends React.Component {
 
       if (focusedDate) {
         renderedDate = (
-          <CBGDayTrace
+          <CBGDateTrace
             bgBounds={this.props.bgBounds}
             data={this.state.focusedDateCbgData}
             date={focusedDate}
@@ -182,6 +185,7 @@ export class TrendsSVGContainer extends React.Component {
             focusedSliceKeys={this.props.focusedSliceKeys}
             focusSlice={this.props.focusSlice}
             margins={this.props.margins}
+            sliceCapRadius={CBG_SLICE_RADIUS}
             svgDimensions={{ height, width }}
             tooltipLeftThreshold={this.props.tooltipLeftThreshold}
             unfocusSlice={this.props.unfocusSlice}

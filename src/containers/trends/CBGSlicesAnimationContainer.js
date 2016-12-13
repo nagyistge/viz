@@ -83,6 +83,7 @@ export default class CBGSlicesAnimationContainer extends React.Component {
       bottom: PropTypes.number.isRequired,
       left: PropTypes.number.isRequired,
     }).isRequired,
+    sliceCapRadius: PropTypes.number.isRequired,
     svgDimensions: PropTypes.shape({
       width: PropTypes.number.isRequired,
       height: PropTypes.number.isRequired,
@@ -156,7 +157,7 @@ export default class CBGSlicesAnimationContainer extends React.Component {
 
   render() {
     const { mungedData } = this.state;
-    const { focusedSlice, xScale, yScale } = this.props;
+    const { focusedSlice, sliceCapRadius, xScale, yScale } = this.props;
     const dataById = {};
     _.each(mungedData, (d) => {
       dataById[d.id] = d;
@@ -177,6 +178,7 @@ export default class CBGSlicesAnimationContainer extends React.Component {
                 focusSlice={this.props.focusSlice}
                 isFocused={config.key === _.get(focusedSlice, ['data', 'id'], null)}
                 key={config.key}
+                sliceCapRadius={sliceCapRadius}
                 tooltipLeftThreshold={this.props.tooltipLeftThreshold}
                 unfocusSlice={this.props.unfocusSlice}
                 xScale={xScale}

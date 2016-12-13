@@ -15,62 +15,31 @@
  * == BSD2 LICENSE ==
  */
 
-.focused {
-  fill: var(--bkgrnd);
-  stroke: var(--cbg-slice--hover);
-  stroke-opacity: 0.75;
-  stroke-width: 1px;
-}
-
-.hoverTarget {
-  fill-opacity: 0.5;
-  stroke: black;
-  stroke-opacity: 0.75;
+.border {
+  stroke: white;
   stroke-width: 1px;
 }
 
 .low {
+  composes: border;
   composes: bgLow from '../../../styles/diabetes.css';
 }
 
 .target {
+  composes: border;
   composes: bgTarget from '../../../styles/diabetes.css';
 }
 
 .high {
+  composes: border;
   composes: bgHigh from '../../../styles/diabetes.css';
 }
 
-.median {
-  stroke: white;
-  stroke-width: 1px;
-  pointer-events: none;
+.invisible {
+  stroke: none;
+  fill: transparent;
 }
 
-.rangeSlice {
-  // the stroke on this outermost slice is to blend in w/bkgrnd
-  // and thus prevent flashing when mousing from slice to slice
-  stroke: var(--bkgrnd-darkest);
-  stroke-width: 1px;
-  fill: var(--cbg-slice--100);
-}
-
-.rangeSliceHovered {
-  composes: rangeSlice hoverTarget;
-}
-
-.outerSlice {
-  fill: var(--cbg-slice--80);
-}
-
-.outerSliceHovered {
-  composes: outerSlice hoverTarget;
-}
-
-.quartileSlice {
-  fill: var(--cbg-slice--50);
-}
-
-.quartileSliceHovered {
-  composes: quartileSlice hoverTarget;
+.transparify {
+  fill-opacity: 0.3;
 }

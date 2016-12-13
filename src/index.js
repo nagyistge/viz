@@ -17,7 +17,7 @@
 
 require('./styles/colors.css');
 
-import CBGDayTraceLabels from './components/trends/cbg/CBGDayTraceLabels';
+import CBGDateTraceLabel from './components/trends/cbg/CBGDateTraceLabel';
 import FocusedCBGSliceLabel from './components/trends/cbg/FocusedCBGSliceLabel';
 import FocusedRangeLabels from './components/trends/common/FocusedRangeLabels';
 import FocusedSMBGPointLabel from './components/trends/smbg/FocusedSMBGPointLabel';
@@ -30,7 +30,7 @@ import TrendsContainer from './containers/trends/TrendsContainer';
 import vizReducer from './redux/reducers/';
 
 const components = {
-  CBGDayTraceLabels,
+  CBGDateTraceLabel,
   FocusedCBGSliceLabel,
   FocusedRangeLabels,
   FocusedSMBGPointLabel,
